@@ -1,21 +1,20 @@
-
 ## Crack
 
-## c'est quoi ?
+## what's this ?
 
-crack est un programme de crack de mot de passe en http
-peut etre utiliser sur les wifi de cybercafe et autres
+crack is a http password cracker program
+can be used on cybercafe wifi and others
 
 to use to crack the cybercafe login and password
 
 
-## Utilisation
-pas de librairie externe utiliser
-```
+## Use
+no external library use
+`` ``
 python login.py
-```
+`` ``
 
 ## Contributing
-vos contribution sont les bienvenu
+your contributions are welcome
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT] (https://choosealicense.com/licenses/mit/)
