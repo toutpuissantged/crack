@@ -75,7 +75,7 @@ def crack(rec):
         # envoye ; reception ; et traitement automatique des requetes HTTP
         while bou:
             try:
-                r = rq.urlopen(env.url+'?'+env.login+'='+str(user)+'&'+env.psw+'=1')
+                #r = rq.urlopen(env.url+'?'+env.login+'='+str(user)+'&'+env.psw+'=1')
                 bou=0
             except :
                 print("connexion perdu, reconnexion...",end="\r")
