@@ -5,9 +5,16 @@ import time
 import threading
 from config import env 
 
+class Thread(threading.Thread):
+    def __init__(self,rec):
+        threading.Thread.__init__(self)
+        self.rec=rec
+    def run(self):
+        crack(self.rec)
+        
+
 print(" \t\t DEMARRAGE DU MOTEUR  \n\n\t\t ...partie login ...\n\n")
 global lettre
-lettre=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','v','w','u','x','y','z','0','1','2','3','4','5','6','7','8','9','']
 lettre_optimiz='qwertyuiopasdfghjklzxcvbnm'
 num_optimiz='0123456789'
 Lettre_optimiz='QWERTYUIOPASDFGHJKLZXCVBNM'
@@ -228,5 +235,4 @@ t18.join()
 
 print("fermeture du moteur ,bye ")
 time.sleep(2)
-#  code source ecrit par toutpuissantged
-
+exit()
