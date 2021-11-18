@@ -1,0 +1,30 @@
+{
+  "name": "brutme",
+  "version": "1.0.0",
+  "description": "brutforce toolskit",
+  "main": "src/main.py",
+  "directories": {
+    "test": "tests",
+    "doc": "doc",
+    "bin": "bin"
+  },
+  "scripts": {
+    "start": "python /src/main.py",
+    "start:server":"python server/__init__.py",
+    "install": "pip install -r requirements.txt",
+    "test": "python -m unittest discover -v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toutpuissantged/crack.git"
+  },
+  "keywords": [
+    "pentesting"
+  ],
+  "author": "toutpuissantged",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/toutpuissantged/crack/issues"
+  },
+  "homepage": "https://github.com/toutpuissantged/crack#readme"
+}

@@ -1,5 +1,5 @@
 class env():
-    url='http://plk.com/login'
+    url='http://localhost:5000/login'
     login='username'
     psw='password'
     longeur_du_code=4
