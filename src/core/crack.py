@@ -72,7 +72,7 @@ class Crack:
             # envoye ; reception ; et traitement automatique des requetes HTTP
             while self.bou==1:
                 try:
-                    self.req=rq.Request(env.url_login+self.user+env.url_pass+self.passw)
+                    self.req=env.url+'?'+env.login+'='+str(self.user)+'&'+env.psw+'=1'
                     self.r=rq.urlopen(self.req)
                     self.bou = 0
                 except:
