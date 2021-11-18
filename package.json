@@ -9,7 +9,7 @@
     "bin": "bin"
   },
   "scripts": {
-    "start": "python /src/main.py",
+    "start": "env/Scripts/activate.bat python src/main.py",
     "start:server":"python server/__init__.py",
     "install": "pip install -r requirements.txt",
     "test": "python -m unittest discover -v"
