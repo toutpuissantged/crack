@@ -9,13 +9,13 @@ def index():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     default = {
-        'username': 'admin',
-        'password': 'admin'
+        'username': 'abc',
+        'password': 'abc'
     }
     if request.method == 'GET':
         print(request.args.get)
         if request.args.get('username') == default['username'] and request.args.get('password') == default['password']:
-            return 'Login success'
+            return 'connection established'
         else :
             return 'Login failed'
     # the code below is executed if the request method

