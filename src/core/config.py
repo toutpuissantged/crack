@@ -2,9 +2,9 @@ class env():
     url='http://localhost:5000/login'
     login='username'
     psw='password'
-    longeur_du_code=4
-    username_length=4
-    password_length=4
+    
+    username_length=5
+    password_length=5
     nom_fichiers_login="login_found.txt"
     invalid_password_error_msg="invalid password"
     success_message = "connection established"

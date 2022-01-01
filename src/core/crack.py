@@ -13,18 +13,18 @@ class Crack:
         self.space_optimiz=' '
         self.out_file_name = "login_found.txt"
         self.num_login_found=0
-        self.lettre_len=25
-        self.Lettre_len=25
-        self.num_len=9
-        self.special_len=28
+        self.lettre_len=len(self.lettre_optimiz)-1
+        self.Lettre_len=len(self.Lettre_optimiz)-1
+        self.num_len=len(self.num_optimiz)-1
+        self.special_len=len(self.special_optimiz)-1
         self.lettre=self.lettre_optimiz+self.num_optimiz+self.space_optimiz
         self.long=self.lettre_len
         self.bou=1
         self.repo5=4
-        self.num=env.longeur_du_code
+        self.num=env.username_length
         self.long2=0
         self.long3=0
-        self.x,self.y,self.z,self.u=0,0,0,0        
+        self.x,self.y,self.z,self.u ,self.v=0,0,0,0,0, 
 
         
     def run(self):
@@ -39,7 +39,7 @@ class Crack:
         while 1:
             self.bou=1
             self.t1=time.time()
-            self.user=(self.lettre[self.x]+self.lettre[self.y]+self.lettre[self.z])
+            self.user=(self.lettre[self.x]+self.lettre[self.y]+self.lettre[self.z]+self.lettre[self.u]+self.lettre[self.v])
             self.x+=1
             # coeur du moteur... va permettre la generation ordonner des logins
             if self.x==self.long3:
@@ -58,17 +58,34 @@ class Crack:
                 else:
                         pass
             elif self.z==self.long:
-                    self.x=self.long2
-                    self.y=0
-                    self.z=0
-                    self.u+=1
-                    if self.num==3:
-                            break
-                    else :
-                            pass
+                self.x=self.long2
+                self.y=0
+                self.z=0
+                self.u+=1
+                if self.num==3:
+                        break
+                else :
+                        pass
             elif self.u==self.long:
-                    if self.num==4:
-                            break 
+                self.x=self.long2
+                self.y=0
+                self.z=0
+                self.u=0
+                self.v+=1
+                if self.num==4:
+                        break
+                else :
+                        pass 
+            elif self.v==self.long:
+                self.x=self.long2
+                self.y=0
+                self.z=0
+                self.u=0
+                self.v=0
+                if self.num==5:
+                        break
+                else :
+                        pass 
 
             # envoye ; reception ; et traitement automatique des requetes HTTP
             while self.bou==1:
